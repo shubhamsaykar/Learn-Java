@@ -1,19 +1,22 @@
 package com.shubham;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamApiStudy {
 
-	
 	public static void main(String[] args) {
 
 		List<Integer> nums = Arrays.asList(7, 4, 6, 3, 6, 7, 5, 3);
@@ -38,6 +41,32 @@ public class StreamApiStudy {
 		printFrequencyOFcharInString();
 		printMultipleOfAny();
 		reverseWordsOfString();
+		findLastElement();
+		IsAnagram();
+
+	}
+
+	private static void IsAnagram() {
+
+		String s1 = "Mother In Law";
+		String s2 = "Hitler Woman";
+
+		s1 = Stream.of(s1.replaceAll("\\s", "").split("")).map(String::toUpperCase).sorted()
+				.collect(Collectors.joining());
+		s2 = Stream.of(s2.replaceAll("\\s", "").split("")).map(String::toUpperCase).sorted()
+				.collect(Collectors.joining());
+		if (s1.equals(s2)) {
+			System.out.println(s1 + " The string is anagram with string " + s2);
+		} else {
+			System.out.println(s1 + " The string is not  anagram with string " + s2);
+		}
+
+	}
+
+	private static void findLastElement() {
+		List<Integer> list = Arrays.asList(3, 5, 6, 2, 6, 3, 5, 3, 3, 56, 7, 2, 3, 12);
+		Integer lastElement = list.stream().skip(list.size() - 1).findFirst().get();
+		System.out.println("The last element of list is::" + lastElement);
 
 	}
 
@@ -57,11 +86,30 @@ public class StreamApiStudy {
 	}
 
 	private static void printFrequencyOFcharInString() {
-		String str = "frequency";
-		Map<Character, Long> frequencyMap = str.chars().mapToObj(c -> (char) c)
+		String str = "Better Butter";
+//		Stream Approch
+		Map<Character, Long> charString = str.chars().mapToObj(c -> (char) c)
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-		System.out.println("Frequency of chars in String " + frequencyMap);
+		System.out.println("duplicate characters in a string"+charString);
 
+//		Native approch
+		HashMap<Character, Integer> charMap = new HashMap<Character, Integer>();
+
+		char[] strArray = str.toCharArray();
+
+		for (Character c : strArray) {
+			if (charMap.containsKey(c)) {
+				charMap.put(c, charMap.get(c) + 1);
+			} else {
+				charMap.put(c, 1);
+			}
+		}
+		Set<Character> keySet = charMap.keySet();
+		for (Character c : keySet) {
+			if (charMap.get(c) >= 1) {
+				System.out.println(c + " : " + charMap.get(c));
+			}
+		}
 	}
 
 //	frequncy of each element in an list
@@ -200,8 +248,6 @@ public class StreamApiStudy {
 
 	public static boolean isPalindrom(int num) {
 
-
-		
 //		normal Approch
 		int originalNum = num;
 		int reverseNum = 0;
@@ -216,10 +262,7 @@ public class StreamApiStudy {
 		} else {
 			return false;
 		}
-		
-		
 
 	}
-	
-	
+
 }
