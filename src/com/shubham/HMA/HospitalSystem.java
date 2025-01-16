@@ -256,6 +256,7 @@ public class HospitalSystem {
 			case 5:
 				System.out.println("Enter Doctor ID to cancle appointment: ");
 				int doctorId = scanner.nextInt();
+				scanner.nextLine();
 				hospitalSystem.cancleAppointmentByDoctorId(doctorId);
 
 				break;

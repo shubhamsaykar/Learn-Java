@@ -1,6 +1,5 @@
 package com.shubham;
 
-import java.util.Iterator;
 
 public class LinearSearch {
 
@@ -12,11 +11,11 @@ public class LinearSearch {
 //		System.out.println(index);
 //		System.out.println("Minimum of arr is "+min(arr));
 
-		fibonacciSeries(10);
-		int factorial = fact(5);
+//		fibonacciSeries(10);
+		int factorial = fact(4);
 		System.out.println("\n factorial of 5 is " + factorial);
 
-		binarySearch();
+//		binarySearch();
 	}
 
 	public static void fibonacciSeries(int n) {
@@ -45,8 +44,11 @@ public class LinearSearch {
 
 	public static int fact(int num) {
 		int fact = 1;
+		if(num == 0) {
+			return fact;
+		}
 		for (int i = 1; i <= num; i++) {
-			fact = fact * i;
+			fact *=  i;
 		}
 		return fact;
 	}

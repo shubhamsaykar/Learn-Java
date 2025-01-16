@@ -23,7 +23,6 @@ public class StreamApiStudy {
 
 		Optional<Integer> first = nums.stream().distinct().sorted((a, b) -> (b - a)).skip(1).findFirst();
 		System.out.println("Second highest " + first.get());
-
 		System.out.println("factorial of 5 is =" + factorial(5));
 		System.out.println("Number is prime =" + isPrime(4));
 		sumAll();
@@ -43,6 +42,8 @@ public class StreamApiStudy {
 		reverseWordsOfString();
 		findLastElement();
 		IsAnagram();
+		System.out.println("Factorial of  is: " + fact(6));
+		
 
 	}
 
@@ -90,7 +91,7 @@ public class StreamApiStudy {
 //		Stream Approch
 		Map<Character, Long> charString = str.chars().mapToObj(c -> (char) c)
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-		System.out.println("duplicate characters in a string"+charString);
+		System.out.println("duplicate characters in a string" + charString);
 
 //		Native approch
 		HashMap<Character, Integer> charMap = new HashMap<Character, Integer>();
@@ -117,6 +118,7 @@ public class StreamApiStudy {
 		List<Integer> list = Arrays.asList(3, 5, 6, 2, 6, 3, 5, 3, 3, 56, 7, 2, 3, 12);
 		Map<Integer, Long> frequencyMap = list.stream()
 				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
 
 		System.out.println("Frequency of elements in list " + frequencyMap);
 	}
@@ -176,6 +178,19 @@ public class StreamApiStudy {
 		return true;
 	}
 
+	public static boolean isP(int n) {
+		if (n <= 1) {
+			return false;
+		}
+		for (int i = 2; i <= Math.sqrt(n); i++) {
+			if (n % i == 0) {
+				return false;
+			}
+		}
+		return true;
+
+	}
+
 	public static int factorial(int num) {
 		int result = 1;
 		while (num > 1) {
@@ -183,6 +198,13 @@ public class StreamApiStudy {
 			num--;
 		}
 		return result;
+	}
+
+	public static int fact(int n) {
+		if (n == 0 || n == 1) {
+			return 1;
+		}
+		return n * fact(n - 1);
 	}
 
 	public static int sumAll() {
@@ -254,8 +276,8 @@ public class StreamApiStudy {
 
 		while (num != 0) {
 			int digit = num % 10;
-			reverseNum = reverseNum * 10 + digit;
-			num /= 10;
+			reverseNum  = reverseNum *10 +digit;
+			num/=10;
 		}
 		if (originalNum == reverseNum) {
 			return true;

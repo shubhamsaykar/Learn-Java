@@ -1,71 +1,37 @@
 package com.shubham;
 
-
 public class Main {
 
-	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		pattern1(4);
+		System.out.println("\n");
 		pattern2(5);
+		System.out.println("\n");
 		pattern3(5);
+		System.out.println("\n");
 		pattern4(5);
+		System.out.println("\n");
 		pattern5(5);
+		System.out.println("\n");
 		pattern6(5);
+		System.out.println("\n");
 		pattern7(5);
+		System.out.println("\n");
 		pattern8(5);
+		System.out.println("\n");
 		pattern9(5);
+		System.out.println("\n");
 		pattern10(5);
+		System.out.println("\n");
 		pattern11(5);
+		System.out.println("\n");
 		pattern12(4);
+		System.out.println("\n");
 		pattern13(5);
-		pattern14(5); 
-		
-		
+		System.out.println("\n");
+		pattern14(5);
 
 	}
-
-	 static void pattern13(int n) {
-		for (int i = 0; i <= n; i++) {
-			
-			for (int k = 0; k < i ;k++) {
-				System.out.print(" ");
-			}
-			for (int j = 0; j < n-i; j++) {
-				System.out.print("* ");
-			}
-			System.out.println();
-		}
-	}
-	 
-	 
-	 static void pattern14(int n) {
-			for (int i = 0; i <=2* n ; i++) {
-				
-				int c = i > n ? 2 * n - i : i;
-				for (int k = 0; k < c ;k++) {
-					System.out.print(" ");
-				}
-				for (int j = 1; j <= n-c ; j++) {
-					System.out.print("* ");
-				}
-				System.out.println();
-			}
-		}
-
-	 static void pattern12(int n) {
-		int originalN = n;
-		n = 2 * n;
-		for (int i = 1; i <= n - 1; i++) {
-			for (int j = 1; j <= n - 1; j++) {
-				int value = originalN - Math.min(Math.min(i, j), Math.min(n - i, n - j)) + 1;
-				System.out.print(value + " ");
-			}
-			System.out.println();
-		}
-	}
-	 
-	 
-	 
 
 	static void pattern1(int n) {
 //		outer loop for number of rows
@@ -213,6 +179,45 @@ public class Main {
 			}
 			for (int col = 2; col <= c; col++) {
 				System.out.print(col + " ");
+			}
+			System.out.println();
+		}
+	}
+
+	static void pattern12(int n) {
+		int originalN = n;
+		n = 2 * n;
+		for (int i = 1; i <= n - 1; i++) {
+			for (int j = 1; j <= n - 1; j++) {
+				int value = originalN - Math.min(Math.min(i, j), Math.min(n - i, n - j)) + 1;
+				System.out.print(value + " ");
+			}
+			System.out.println();
+		}
+	}
+
+	static void pattern13(int n) {
+		for (int i = 0; i <= n; i++) {
+
+			for (int k = 0; k < i; k++) {
+				System.out.print(" ");
+			}
+			for (int j = 0; j < n - i; j++) {
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+	}
+
+	static void pattern14(int n) {
+		for (int i = 0; i <= 2 * n; i++) {
+
+			int c = i > n ? 2 * n - i : i;
+			for (int k = 0; k < c; k++) {
+				System.out.print(" ");
+			}
+			for (int j = 1; j <= n - c; j++) {
+				System.out.print("* ");
 			}
 			System.out.println();
 		}
